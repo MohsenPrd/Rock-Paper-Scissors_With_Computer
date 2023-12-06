@@ -6,8 +6,16 @@ print('{r: rock | p: paper | s: scissors}\n')
 choiceList= ['r','p','s']
 
 p1_1st= input("hi 'Player 1', Set your first choice: ")
+while p1_1st != 'rock' and p1_1st != 'paper' and p1_1st != 'scissors':
+    p1_1st= input("Again, Set your first choice: ")
+    
 p1_2nd= input("Set your second choice: ")
+while p1_2nd != 'rock' and p1_2nd != 'paper' and p1_2nd != 'scissors':
+    p1_2nd= input("Again, Set your second choice: ")
+    
 p1_3rd= input("Set your third choice: ")
+while p1_3rd != 'rock' and p1_3rd != 'paper' and p1_3rd != 'scissors':
+    p1_3rd= input("Again, Set your third choice: ")
 p1_score= 0
 
 co_1st= random.choice(choiceList)
@@ -99,7 +107,6 @@ elif p1_score == co_score :
     
 elif p1_score < co_score :
     print('computer is the winner!')
-
 
 print(f"\ncomputers first choice: {co_1st}")
 print(f"computers second choice: {co_2nd}")
