@@ -6,15 +6,15 @@ print('{r: rock | p: paper | s: scissors}\n')
 choiceList= ['r','p','s']
 
 p1_1st= input("hi 'Player 1', Set your first choice: ")
-while p1_1st != 'rock' and p1_1st != 'paper' and p1_1st != 'scissors':
+while p1_1st not in choiceList:
     p1_1st= input("Again, Set your first choice: ")
     
 p1_2nd= input("Set your second choice: ")
-while p1_2nd != 'rock' and p1_2nd != 'paper' and p1_2nd != 'scissors':
+while p1_2nd not in choiceList:
     p1_2nd= input("Again, Set your second choice: ")
     
 p1_3rd= input("Set your third choice: ")
-while p1_3rd != 'rock' and p1_3rd != 'paper' and p1_3rd != 'scissors':
+while p1_3rd not in choiceList:
     p1_3rd= input("Again, Set your third choice: ")
 p1_score= 0
 
@@ -98,16 +98,65 @@ elif p1_3rd == "s" and co_3rd == "p":
 print(f'\nscore of player 1: {p1_score}\nscore of computer: {co_score}')
 
 # Final
-
+winner = '';
 if p1_score > co_score :
     print('Player 1 is the winner!')
+    winner = 'user';
 
 elif p1_score == co_score :
     print('Draw!')
+    winner = 'draw';
     
 elif p1_score < co_score :
     print('computer is the winner!')
+    winner = 'computer';
 
 print(f"\ncomputers first choice: {co_1st}")
 print(f"computers second choice: {co_2nd}")
 print(f"computers third choice: {co_3rd}")
+
+
+result = '';
+if winner == 'draw':
+    result = 'the game have no winner (Draw)'
+else:
+    result = f'{winner} is the winner'
+
+# Save results to file
+
+file = open('Rock-Paper-Scissors_With_Computer/rps_results.txt', 'a')
+
+file.write(f'''
+
+=== First Round ===
+
+user choices: {p1_1st}, {p1_2nd}, {p1_3rd}
+user score: {p1_score}
+
+computer choices: {co_1st}, {co_2nd}, {co_3rd}
+computer score: {co_score}
+
+=== Second Round ===
+
+user choices: {p1_1st}, {p1_2nd}, {p1_3rd}
+user score: {p1_score}
+
+computer choices: {co_1st}, {co_2nd}, {co_3rd}
+computer score: {co_score}
+           
+
+=== Third Round ===
+
+user choices: {p1_1st}, {p1_2nd}, {p1_3rd}
+user score:   {p1_score}
+
+computer choices: {co_1st}, {co_2nd}, {co_3rd}
+computer score: {co_score}
+
+=== Result ===
+
+{result}
+
+---------------------------------------
+
+           ''')
